@@ -1,0 +1,43 @@
+[
+  {
+    "query": "Calculate the year-over-year percentage change in total operating expenses from 2023 to 2024 and identify which specific expense line item had the largest absolute dollar increase.",
+    "golden_context": "Total operating expenses $537,933 $569,366; Cost of sales $304,739 $326,288; Fulfillment $90,619 $98,505; Technology and infrastructure $85,622 $88,544; Sales and marketing $44,370 $43,907; General and administrative $11,816 $11,359; Other operating expense (income), net 767 763",
+    "temporal_hard_negative": "Total operating expenses for 2022 were $492,100 and rose to $512,450 in 2023. Cost of sales increased from $280,500 to $295,000, while Fulfillment costs jumped by $12 billion.",
+    "calculation_type": "percentage_change",
+    "reasoning_trace": "Step 1: Identify Total Operating Expenses for 2023 ($537,933M) and 2024 ($569,366M). Step 2: Calculate percentage change: (($569,366 - $537,933) / $537,933) * 100 = 5.84%. Step 3: Compare absolute increases for each line item: Cost of Sales increased by $21,549M ($326,288 - $304,739); Fulfillment increased by $7,886M ($98,505 - $90,619); Tech/Infrastructure increased by $2,922M. Other categories decreased or had minimal change. Cost of sales had the largest absolute increase.",
+    "final_answer": "5.84% growth; Cost of sales"
+  },
+  {
+    "query": "Based on the Net Sales and Operating Income tables, what was the AWS operating margin in 2024 compared to 2023?",
+    "golden_context": "AWS Net Sales 2023: 90,757; 2024: 107,556; AWS Operating Income 2023: 24,631; 2024: 39,834.",
+    "temporal_hard_negative": "In 2022, AWS Net Sales were $80,120M with an operating income of $22,400M. In 2023, sales reached $95,000M with income at $25,100M.",
+    "calculation_type": "ratio",
+    "reasoning_trace": "Step 1: Extract 2023 AWS Operating Income ($24,631M) and Net Sales ($90,757M). Margin = 24,631 / 90,757 = 27.14%. Step 2: Extract 2024 AWS Operating Income ($39,834M) and Net Sales ($107,556M). Margin = 39,834 / 107,556 = 37.04%. Step 3: Compare the two results.",
+    "final_answer": "2023: 27.14%; 2024: 37.04%"
+  },
+  {
+    "query": "Determine the impact of foreign exchange rates on total consolidated net sales in 2024 by calculating what the total net sales would have been if FX rates had remained constant.",
+    "golden_context": "Consolidated Net Sales 2024: $637,959; Changes in foreign exchange rates reduced net sales by $2.3 billion in 2024.",
+    "temporal_hard_negative": "Changes in foreign exchange rates increased net sales by $1.5 billion in 2023, while total sales were $574,785 million.",
+    "calculation_type": "addition",
+    "reasoning_trace": "Step 1: Identify reported 2024 Consolidated Net Sales: $637,959 million. Step 2: Identify the FX impact: a reduction of $2.3 billion ($2,300 million). Step 3: Add the reduction back to the reported sales to find constant currency sales: $637,959 + $2,300 = $640,259 million.",
+    "final_answer": "$640,259 million"
+  },
+  {
+    "query": "What was the percentage point change in 'Shipping costs' as a component of 'Cost of sales' between 2023 and 2024?",
+    "golden_context": "Shipping costs were $89.5 billion and $95.8 billion in 2023 and 2024. Cost of sales $304,739 $326,288.",
+    "temporal_hard_negative": "Shipping costs were $75.2 billion in 2022 and $80.1 billion in 2023. Cost of sales in 2022 was $270,400 million.",
+    "calculation_type": "percentage_change",
+    "reasoning_trace": "Step 1: Calculate shipping as % of Cost of Sales for 2023: ($89,500 / $304,739) * 100 = 29.37%. Step 2: Calculate shipping as % of Cost of Sales for 2024: ($95,800 / $326,288) * 100 = 29.36%. Step 3: Subtract 2023 percentage from 2024 percentage: 29.36% - 29.37% = -0.01 percentage points.",
+    "final_answer": "-0.01 percentage points"
+  },
+  {
+    "query": "Calculate the total change in the company's debt-to-operating-income ratio from 2023 to 2024 using consolidated operating income and long-term debt figures.",
+    "golden_context": "Consolidated Operating Income 2023: $36,852; 2024: $68,593; Our long-term debt was $58.3 billion and $52.6 billion as of December 31, 2023 and 2024.",
+    "temporal_hard_negative": "Long-term debt was $65.2 billion in 2022 and operating income was $22,300 million. By 2023, debt dropped to $60.1 billion.",
+    "calculation_type": "ratio",
+    "reasoning_trace": "Step 1: Calculate 2023 ratio: $58,300 (Debt) / $36,852 (Income) = 1.582. Step 2: Calculate 2024 ratio: $52,600 (Debt) / $68,593 (Income) = 0.767. Step 3: Calculate the change: 0.767 - 1.582 = -0.815.",
+    "final_answer": "-0.815"
+  }
+]
+

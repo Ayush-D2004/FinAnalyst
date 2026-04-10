@@ -1,0 +1,82 @@
+[
+  {
+    "query": "What is the year-over-year percentage growth in total net sales from 2024 to 2025, and does it match the reported change?",
+    "golden_context": "Total net sales $ 416,161 6 % $ 391,035 2 % $ 383,285 :contentReference[oaicite:0]{index=0}",
+    "temporal_hard_negative": "Total net sales $ 398,500 4 % $ 372,000 3 % $ 360,000",
+    "calculation_type": "percentage_change",
+    "reasoning_trace": "Step 1: Identify 2025 sales = 416,161 and 2024 sales = 391,035. Step 2: Compute change = 416,161 - 391,035 = 25,126. Step 3: Divide by 2024 value = 25,126 / 391,035 ≈ 0.0642 ≈ 6.4%, which aligns with reported 6%.",
+    "final_answer": "6.4%"
+  },
+  {
+    "query": "What percentage of total 2025 net sales is contributed by iPhone revenue?",
+    "golden_context": "iPhone $ 209,586 ... Total net sales $ 416,161 :contentReference[oaicite:1]{index=1}",
+    "temporal_hard_negative": "iPhone $ 198,000 ... Total net sales $ 398,500",
+    "calculation_type": "ratio",
+    "reasoning_trace": "Step 1: Identify iPhone revenue = 209,586 and total = 416,161. Step 2: Compute ratio = 209,586 / 416,161. Step 3: Result ≈ 0.5036 → 50.36%.",
+    "final_answer": "50.4%"
+  },
+  {
+    "query": "By how much did Services revenue increase in absolute terms from 2024 to 2025?",
+    "golden_context": "Services 109,158 14 % 96,169 13 % 85,200 :contentReference[oaicite:2]{index=2}",
+    "temporal_hard_negative": "Services 102,000 10 % 90,000 8 % 80,000",
+    "calculation_type": "subtraction",
+    "reasoning_trace": "Step 1: Identify 2025 Services = 109,158 and 2024 Services = 96,169. Step 2: Subtract = 109,158 - 96,169. Step 3: Result = 12,989.",
+    "final_answer": "12989"
+  },
+  {
+    "query": "What is the combined share of Europe and Greater China in total 2025 net sales?",
+    "golden_context": "Europe 111,032 ... Greater China 64,377 ... Total net sales $ 416,161 :contentReference[oaicite:3]{index=3}",
+    "temporal_hard_negative": "Europe 105,000 ... Greater China 70,000 ... Total net sales $ 398,500",
+    "calculation_type": "ratio",
+    "reasoning_trace": "Step 1: Add Europe and Greater China = 111,032 + 64,377 = 175,409. Step 2: Divide by total = 175,409 / 416,161. Step 3: Result ≈ 0.4214 → 42.14%.",
+    "final_answer": "42.1%"
+  },
+  {
+    "query": "What is the absolute increase in Americas net sales from 2024 to 2025, and what implied growth rate does it represent?",
+    "golden_context": "Americas $ 178,353 7 % $ 167,045 3 % $ 162,560 :contentReference[oaicite:4]{index=4}",
+    "temporal_hard_negative": "Americas $ 170,000 5 % $ 160,000 4 % $ 150,000",
+    "calculation_type": "percentage_change",
+    "reasoning_trace": "Step 1: Compute absolute increase = 178,353 - 167,045 = 11,308. Step 2: Divide by 2024 value = 11,308 / 167,045. Step 3: Result ≈ 0.0677 → 6.77%, close to reported 7%.",
+    "final_answer": "11308 and 6.8%"
+  },
+  {
+    "query": "What is the year-over-year percentage decrease in the potential decline in fair value of the investment portfolio from 2024 to 2025 under a 100 basis point rate increase?",
+    "golden_context": "Investment portfolio ... Decline in fair value $ 2,416 $ 2,755 :contentReference[oaicite:0]{index=0}",
+    "temporal_hard_negative": "Investment portfolio ... Decline in fair value $ 2,700 $ 2,500",
+    "calculation_type": "percentage_change",
+    "reasoning_trace": "Step 1: Identify 2025 value = 2,416 and 2024 value = 2,755. Step 2: Compute change = 2,416 - 2,755 = -339. Step 3: Divide by 2024 value = -339 / 2,755 ≈ -0.123 → -12.3%.",
+    "final_answer": "-12.3%"
+  },
+  {
+    "query": "What is the absolute reduction in projected annual interest expense impact from term debt between 2024 and 2025?",
+    "golden_context": "Term debt ... Increase in annual interest expense $ 129 $ 139 :contentReference[oaicite:1]{index=1}",
+    "temporal_hard_negative": "Term debt ... Increase in annual interest expense $ 150 $ 140",
+    "calculation_type": "subtraction",
+    "reasoning_trace": "Step 1: Identify 2025 value = 129 and 2024 value = 139. Step 2: Subtract = 129 - 139 = -10. Step 3: Absolute reduction = 10.",
+    "final_answer": "10"
+  },
+  {
+    "query": "What is the percentage increase in the VAR-based maximum one-day loss from 2024 to 2025?",
+    "golden_context": "maximum one-day loss in fair value of $590 million and $538 million as of September 27, 2025 and September 28, 2024, respectively :contentReference[oaicite:2]{index=2}",
+    "temporal_hard_negative": "maximum one-day loss in fair value of $560 million and $540 million",
+    "calculation_type": "percentage_change",
+    "reasoning_trace": "Step 1: Identify 2025 value = 590 and 2024 value = 538. Step 2: Compute change = 590 - 538 = 52. Step 3: Divide by 2024 value = 52 / 538 ≈ 0.0967 → 9.67%.",
+    "final_answer": "9.7%"
+  },
+  {
+    "query": "What is the ratio of the 2025 investment portfolio fair value decline to the 2025 term debt interest expense increase under the same rate shock?",
+    "golden_context": "Investment portfolio ... $ 2,416 ... Term debt ... $ 129 :contentReference[oaicite:3]{index=3}",
+    "temporal_hard_negative": "Investment portfolio ... $ 2,000 ... Term debt ... $ 150",
+    "calculation_type": "ratio",
+    "reasoning_trace": "Step 1: Identify values = 2,416 (investment decline) and 129 (term debt increase). Step 2: Compute ratio = 2,416 / 129. Step 3: Result ≈ 18.73.",
+    "final_answer": "18.7"
+  },
+  {
+    "query": "By how many millions does the combined risk exposure (investment decline + term debt impact) decrease from 2024 to 2025?",
+    "golden_context": "Investment portfolio ... $ 2,416 $ 2,755 ... Term debt ... $ 129 $ 139 :contentReference[oaicite:4]{index=4}",
+    "temporal_hard_negative": "Investment portfolio ... $ 2,600 $ 2,400 ... Term debt ... $ 140 $ 130",
+    "calculation_type": "subtraction",
+    "reasoning_trace": "Step 1: Compute 2025 total = 2,416 + 129 = 2,545. Step 2: Compute 2024 total = 2,755 + 139 = 2,894. Step 3: Difference = 2,545 - 2,894 = -349 → decrease of 349.",
+    "final_answer": "349"
+  }
+]

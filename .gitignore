@@ -3,11 +3,14 @@ __pycache__/
 *.py[cod]
 *$py.class
 .env
-data/curated
-data/db
+# data/curated
+# data/db
 data/edgar_cache
-data/index
-data/training
+# data/index
+# data/training
+*.html
+*.bin
+*.ids
 *.db
 *.log
 scratch/
