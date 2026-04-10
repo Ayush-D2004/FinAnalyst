@@ -1,7 +1,7 @@
 # FinAnalyst: High-Fidelity Financial Intelligence & RAG System
 
 
-**FinAnalyst** is a production-grade, modular RAG (Retrieval-Augmented Generation) system designed for deep semantic analysis of SEC EDGAR filings (10-K, 10-Q). By combining section-aware parsing, multi-stage retrieval, and domain-specific fine-tuning, FinAnalyst transforms raw regulatory data into actionable financial insights with high factual density and verifiable citations.
+**FinAnalyst** is a modular RAG (Retrieval-Augmented Generation) system designed for deep semantic analysis of SEC EDGAR filings (10-K, 10-Q). By combining section-aware parsing, multi-stage retrieval, and domain-specific fine-tuning, FinAnalyst transforms raw regulatory data into actionable financial insights with high factual density and verifiable citations.
 
 ## 🚀 Model
 
@@ -73,12 +73,7 @@ The system is architected for local or containerized deployment:
    ```bash
    pip install -r requirements.txt
    ```
-2. **Setup Ingestion**:
-   Configure your user agent in `.env` for SEC EDGAR access.
-3. **Launch the Dashboard**:
+2. **Launch the Dashboard**:
    ```bash
    streamlit run app.py
    ```
-
----
-*Disclaimer: FinAnalyst is an AI assistant for data aggregation and reasoning. It does not provide financial advice.*
