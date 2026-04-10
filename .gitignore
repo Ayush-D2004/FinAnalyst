@@ -1,0 +1,17 @@
+venv_clean/
+__pycache__/
+*.py[cod]
+*$py.class
+.env
+data/curated
+data/db
+data/edgar_cache
+data/index
+data/training
+*.db
+*.log
+scratch/
+notebooks/
+.gemini/
+.serena/
+.vscode/
