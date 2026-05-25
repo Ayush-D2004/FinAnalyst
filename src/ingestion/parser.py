@@ -130,11 +130,18 @@ class EdgarParser:
             sections.append({"section": current_title,
                               "text": "\n".join(current_parts)})
 
+        # Keep unfiltered copy for fallback before removing micro-sections
+        all_sections = list(sections)
         sections = [s for s in sections if len(s["text"].split()) > 20]
-        return sections if sections else [{"section": "General",
-                                           "text": " ".join(
-                                               p for s in sections
-                                               for p in [s["text"]])}]
+
+        if sections:
+            return sections
+
+        # Fallback: concatenate everything into a single General section
+        full_text = " ".join(s["text"] for s in all_sections)
+        if full_text.strip():
+            return [{"section": "General", "text": full_text}]
+        return []
 
     # ── Plaintext fallback ────────────────────────────────────────────────────
 

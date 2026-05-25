@@ -18,3 +18,4 @@ notebooks/
 .gemini/
 .serena/
 .vscode/
+*.safetensors

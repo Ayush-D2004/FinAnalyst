@@ -78,5 +78,181 @@
     "calculation_type": "subtraction",
     "reasoning_trace": "Step 1: Compute 2025 total = 2,416 + 129 = 2,545. Step 2: Compute 2024 total = 2,755 + 139 = 2,894. Step 3: Difference = 2,545 - 2,894 = -349 → decrease of 349.",
     "final_answer": "349"
+  },
+  {
+    "query": "In which fiscal period were new U.S. tariffs announced, and does the filing indicate this occurred in the prior year or the current reporting year?",
+    "golden_context": "Beginning in the second quarter of 2025, new tariffs were announced on imports to the U.S. (“U.S. Tariffs”), including additional tariffs on imports from China, India, Japan, South Korea, Taiwan, Vietnam and the European Union. :contentReference[oaicite:0]{index=0}",
+    "temporal_hard_negative": "Beginning in the second quarter of 2024, new tariffs were announced on imports to the U.S., primarily targeting Latin American trade partners and limited semiconductor categories, reflecting prior-year policy changes.",
+    "calculation_type": "temporal reasoning",
+    "reasoning_trace": "The golden context explicitly states that tariffs were announced in Q2 2025, which corresponds to the current reporting year of the filing. The distractor incorrectly shifts the timing to 2024 and alters the geographic scope. Since the question asks whether it occurred in the prior or current year, the correct interpretation is the current year (2025).",
+    "final_answer": "The tariffs were announced in Q2 2025, i.e., the current reporting year, not the prior year."
+  },
+  {
+    "query": "Does the filing attribute supply chain concentration primarily to U.S.-based manufacturing or to international locations such as Asia?",
+    "golden_context": "A significant majority of the Company’s manufacturing is performed in whole or in part by outsourcing partners located primarily in China mainland, India, Japan, South Korea, Taiwan and Vietnam. :contentReference[oaicite:1]{index=1}",
+    "temporal_hard_negative": "A significant majority of the Company’s manufacturing is performed domestically within the United States, with only limited reliance on Asian outsourcing partners for specialized components.",
+    "calculation_type": "entity recognition",
+    "reasoning_trace": "The golden context clearly identifies Asia-based countries (China, India, Japan, etc.) as the primary manufacturing locations. The distractor reverses this by claiming U.S. concentration, which contradicts the filing. Therefore, the correct entity classification is international/Asia-centric supply chain.",
+    "final_answer": "The supply chain is primarily concentrated in international locations, especially Asia, not the U.S."
+  },
+  {
+    "query": "According to the filing, are international sales a minority or majority of total net sales, and does this differ from prior-year positioning?",
+    "golden_context": "The Company has international operations with sales outside the U.S. representing a majority of the Company’s total net sales. :contentReference[oaicite:2]{index=2}",
+    "temporal_hard_negative": "The Company’s international operations account for a minority of total net sales, reflecting a strategic shift toward domestic revenue growth in the most recent fiscal year.",
+    "calculation_type": "entity comparison",
+    "reasoning_trace": "The golden context explicitly states that international sales represent a majority of total net sales. The distractor incorrectly claims a minority share and introduces a fabricated strategic shift. There is no evidence in the filing of such a change versus prior year.",
+    "final_answer": "International sales represent a majority of total net sales."
+  },
+  {
+    "query": "Did the filing indicate that geopolitical risks intensified starting in 2025 or earlier years such as 2023?",
+    "golden_context": "Beginning in the second quarter of 2025, new tariffs were announced... and further changes could be made in the future. :contentReference[oaicite:3]{index=3}",
+    "temporal_hard_negative": "Beginning in 2023, geopolitical tensions and tariff escalations had already stabilized, with no significant new measures introduced in 2025.",
+    "calculation_type": "temporal reasoning",
+    "reasoning_trace": "The filing explicitly highlights new tariff announcements beginning in Q2 2025, indicating escalation during the current year. The distractor incorrectly claims stabilization in 2023 and absence of 2025 developments, which contradicts the text.",
+    "final_answer": "Geopolitical risks intensified in 2025, not earlier years like 2023."
+  },
+  {
+    "query": "Does the filing associate demand risk primarily with macroeconomic factors like inflation and interest rates, or with product-specific issues such as iPhone unit declines?",
+    "golden_context": "Adverse macroeconomic conditions, including slow growth or recession, high unemployment, inflation, tighter credit, higher interest rates, and currency fluctuations, can adversely impact consumer confidence and spending. :contentReference[oaicite:4]{index=4}",
+    "temporal_hard_negative": "Demand risks are primarily driven by declining iPhone unit sales and reduced upgrade cycles in the smartphone segment, which are identified as the dominant contributors to revenue contraction.",
+    "calculation_type": "entity distinction",
+    "reasoning_trace": "The golden context focuses on macroeconomic drivers (inflation, interest rates, etc.) affecting demand broadly. The distractor introduces a specific product segment (iPhone) and claims it as the primary driver, which is not mentioned in this excerpt. Therefore, the correct interpretation is macroeconomic risk, not product-specific decline.",
+    "final_answer": "Demand risk is attributed to macroeconomic factors, not product-specific issues like iPhone declines."
+  },
+  {
+    "query": "Did total net sales growth from 2024 to 2025 come primarily from Services or Products, and how does this compare to the prior year trend?",
+    "golden_context": "Products $307,003 (2025) vs $294,866 (2024); Services $109,158 (2025) vs $96,169 (2024); Total net sales $416,161 (2025) vs $391,035 (2024). :contentReference[oaicite:0]{index=0}",
+    "temporal_hard_negative": "Services revenue declined in 2025 compared to 2024, while Products revenue remained flat, indicating that total net sales growth was negligible and primarily driven by pricing adjustments rather than segment expansion.",
+    "calculation_type": "segment contribution comparison",
+    "reasoning_trace": "From the golden context, Products increased by ~12,137 while Services increased by ~12,989. Both segments grew, but Services contributed slightly more to the increase. The distractor falsely claims Services declined and Products were flat, which contradicts the data.",
+    "final_answer": "Both segments drove growth, but Services contributed slightly more than Products."
+  },
+  {
+    "query": "Was the increase in net income from 2024 to 2025 primarily due to higher operating income or lower tax provision?",
+    "golden_context": "Operating income increased from $123,216 (2024) to $133,050 (2025), while provision for income taxes decreased from $29,749 (2024) to $20,719 (2025). Net income increased from $93,736 to $112,010. :contentReference[oaicite:1]{index=1}",
+    "temporal_hard_negative": "Net income growth in 2025 was primarily driven by a sharp increase in other income and a stable tax provision, while operating income remained largely unchanged year over year.",
+    "calculation_type": "variance decomposition",
+    "reasoning_trace": "Operating income increased by ~9,834 and tax provision decreased by ~9,030, both materially contributing to net income growth (~18,274). The distractor incorrectly attributes growth to other income and ignores the significant tax reduction and operating improvement.",
+    "final_answer": "It was driven by both higher operating income and a lower tax provision."
+  },
+  {
+    "query": "Did iPhone revenue grow faster than total net sales between 2024 and 2025, or was it slower relative to overall growth?",
+    "golden_context": "iPhone revenue increased from $201,183 (2024) to $209,586 (2025), while total net sales increased from $391,035 to $416,161. :contentReference[oaicite:2]{index=2}",
+    "temporal_hard_negative": "iPhone revenue declined significantly in 2025 compared to 2024, while total net sales growth was driven entirely by Services expansion.",
+    "calculation_type": "growth rate comparison",
+    "reasoning_trace": "iPhone growth ≈ +8,403 (~4.2%), while total net sales growth ≈ +25,126 (~6.4%). Thus, iPhone grew slower than overall company growth. The distractor incorrectly states a decline and misattributes growth entirely to Services.",
+    "final_answer": "iPhone revenue grew, but slower than total net sales."
+  },
+  {
+    "query": "Between 2024 and 2025, did total shareholders’ equity increase due to retained earnings growth or due to reductions in accumulated deficit?",
+    "golden_context": "Accumulated deficit improved from $(19,154) in 2024 to $(14,264) in 2025, while total shareholders’ equity increased from $56,950 to $73,733. :contentReference[oaicite:3]{index=3}",
+    "temporal_hard_negative": "Total shareholders’ equity increased primarily due to new debt issuance and higher liabilities, while accumulated deficit worsened during 2025.",
+    "calculation_type": "balance sheet driver analysis",
+    "reasoning_trace": "Equity increased by ~16,783, while accumulated deficit improved (became less negative) by ~4,890, indicating retained earnings contribution. The distractor incorrectly claims deficit worsened and attributes equity increase to liabilities, which is structurally incorrect.",
+    "final_answer": "The increase was driven in part by improvement in accumulated deficit (retained earnings)."
+  },
+  {
+    "query": "Did operating cash flow in 2025 increase or decrease compared to 2024, and how does this compare to the trend in net income?",
+    "golden_context": "Cash generated by operating activities decreased from $118,254 (2024) to $111,482 (2025), while net income increased from $93,736 to $112,010. :contentReference[oaicite:4]{index=4}",
+    "temporal_hard_negative": "Operating cash flow increased significantly in 2025 in line with net income growth, reflecting improved working capital efficiency across all categories.",
+    "calculation_type": "trend divergence analysis",
+    "reasoning_trace": "Operating cash flow decreased by ~6,772 despite net income increasing by ~18,274, indicating divergence likely due to working capital changes. The distractor incorrectly claims both increased in tandem.",
+    "final_answer": "Operating cash flow decreased, diverging from the increase in net income."
+  },
+  {
+    "query": "Between 2024 and 2025, did Services or Products have a higher percentage growth rate, and how does this compare to total net sales growth?",
+    "golden_context": "Products $307,003 (2025) vs $294,866 (2024); Services $109,158 (2025) vs $96,169 (2024); Total net sales $416,161 vs $391,035. :contentReference[oaicite:0]{index=0}",
+    "temporal_hard_negative": "Products revenue experienced a higher growth rate than Services in 2025, while total net sales growth was primarily driven by declining Services margins.",
+    "calculation_type": "growth rate comparison",
+    "reasoning_trace": "Services grew by ~13.5% (109,158 vs 96,169), while Products grew by ~4.1%. Total net sales grew ~6.4%. The distractor incorrectly reverses segment growth dynamics and introduces unsupported margin claims.",
+    "final_answer": "Services had a higher growth rate than Products and grew faster than total net sales."
+  },
+  {
+    "query": "Did gross margin improvement from 2024 to 2025 result more from revenue growth or cost reduction?",
+    "golden_context": "Gross margin increased from $180,683 (2024) to $195,201 (2025); Total net sales increased and cost of sales rose from $210,352 to $220,960. :contentReference[oaicite:1]{index=1}",
+    "temporal_hard_negative": "Gross margin improvement was driven by a decline in cost of sales, which fell significantly year over year despite flat revenue.",
+    "calculation_type": "margin driver analysis",
+    "reasoning_trace": "Cost of sales increased, not decreased. Therefore, margin expansion came from revenue growth outpacing cost growth. The distractor incorrectly claims cost reduction.",
+    "final_answer": "It was driven by revenue growth outpacing cost increases, not cost reduction."
+  },
+  {
+    "query": "Did operating expenses grow faster than operating income between 2024 and 2025?",
+    "golden_context": "Operating expenses increased from $57,467 to $62,151, while operating income increased from $123,216 to $133,050. :contentReference[oaicite:2]{index=2}",
+    "temporal_hard_negative": "Operating expenses declined in 2025, while operating income growth slowed due to weaker top-line performance.",
+    "calculation_type": "growth comparison",
+    "reasoning_trace": "Operating expenses grew ~8.2%, while operating income grew ~8.0%. Expenses grew slightly faster. The distractor falsely claims expense decline.",
+    "final_answer": "Operating expenses grew slightly faster than operating income."
+  },
+  {
+    "query": "Did the company’s cash balance increase due to operating activities or financing activities in 2025 compared to 2024?",
+    "golden_context": "Cash generated by operating activities was $111,482, while financing activities used $120,686; net increase in cash was $5,991. :contentReference[oaicite:3]{index=3}",
+    "temporal_hard_negative": "Cash increased primarily due to financing inflows, particularly new debt issuance, which outweighed operating cash flow declines.",
+    "calculation_type": "cash flow attribution",
+    "reasoning_trace": "Operating activities generated positive cash, while financing activities were a large outflow. The distractor incorrectly attributes the increase to financing inflows.",
+    "final_answer": "The increase was supported by operating activities, not financing activities."
+  },
+  {
+    "query": "Did deferred revenue increase or decrease from 2024 to 2025, and does this align with Services growth?",
+    "golden_context": "Deferred revenue was $13.7 billion in 2025 vs $12.8 billion in 2024; Services revenue increased from $96,169 to $109,158. :contentReference[oaicite:4]{index=4}",
+    "temporal_hard_negative": "Deferred revenue declined in 2025 despite growth in Services, indicating accelerated revenue recognition and reduced backlog.",
+    "calculation_type": "trend alignment",
+    "reasoning_trace": "Deferred revenue increased alongside Services growth, which is consistent. The distractor falsely claims a decline.",
+    "final_answer": "Deferred revenue increased, aligning with Services growth."
+  },
+  {
+    "query": "Was the change in total assets from 2024 to 2025 driven more by current assets or non-current assets?",
+    "golden_context": "Total assets decreased from $364,980 to $359,241; current assets fell from $152,987 to $147,957, while non-current assets remained relatively stable. :contentReference[oaicite:5]{index=5}",
+    "temporal_hard_negative": "The decline in total assets was primarily driven by a sharp reduction in non-current assets, particularly property, plant and equipment.",
+    "calculation_type": "balance sheet driver",
+    "reasoning_trace": "Current assets declined by ~5,030, while non-current assets were nearly flat. The distractor incorrectly attributes decline to non-current assets.",
+    "final_answer": "The decline was primarily driven by current assets."
+  },
+  {
+    "query": "Did share repurchases increase or decrease from 2024 to 2025, and how did this affect accumulated deficit?",
+    "golden_context": "Common stock repurchased was $90,052 in 2025 vs $95,846 in 2024; accumulated deficit improved from $(19,154) to $(14,264). :contentReference[oaicite:6]{index=6}",
+    "temporal_hard_negative": "Share repurchases increased significantly in 2025, worsening the accumulated deficit compared to the prior year.",
+    "calculation_type": "equity analysis",
+    "reasoning_trace": "Repurchases decreased, and accumulated deficit improved (less negative). The distractor reverses both facts.",
+    "final_answer": "Repurchases decreased, and accumulated deficit improved."
+  },
+  {
+    "query": "Did the company report any material changes in internal control over financial reporting in Q4 2025 compared to prior periods?",
+    "golden_context": "There were no changes in the Company’s internal control over financial reporting during the fourth quarter of 2025 that materially affected controls. :contentReference[oaicite:7]{index=7}",
+    "temporal_hard_negative": "Significant changes in internal control over financial reporting were implemented in Q4 2025 to address previously identified material weaknesses.",
+    "calculation_type": "temporal compliance check",
+    "reasoning_trace": "The filing explicitly states no changes occurred. The distractor introduces fabricated material weaknesses and changes.",
+    "final_answer": "No material changes were reported."
+  },
+  {
+    "query": "Did management conclude that disclosure controls were effective as of 2025, or were deficiencies identified compared to prior years?",
+    "golden_context": "Management concluded that disclosure controls and procedures were effective as of September 27, 2025. :contentReference[oaicite:8]{index=8}",
+    "temporal_hard_negative": "Management identified significant deficiencies in disclosure controls in 2025, indicating a decline in effectiveness compared to prior years.",
+    "calculation_type": "entity validation",
+    "reasoning_trace": "The filing clearly states controls were effective. The distractor contradicts this by claiming deficiencies.",
+    "final_answer": "Disclosure controls were deemed effective."
+  },
+  {
+    "query": "Did iPad revenue increase or decrease from 2023 to 2025, and how does this compare to Wearables revenue over the same period?",
+    "golden_context": "iPad revenue: $28,300 (2023) to $28,023 (2025); Wearables: $39,845 (2023) to $35,686 (2025). :contentReference[oaicite:9]{index=9}",
+    "temporal_hard_negative": "Both iPad and Wearables revenue increased steadily from 2023 to 2025, reflecting strong demand across all hardware categories.",
+    "calculation_type": "multi-period comparison",
+    "reasoning_trace": "Both categories declined over the period. The distractor incorrectly claims growth.",
+    "final_answer": "Both iPad and Wearables revenue decreased from 2023 to 2025."
+  },
+  {
+    "query": "Was the increase in EPS from 2024 to 2025 driven primarily by higher net income or by a reduction in share count?",
+    "golden_context": "Net income increased from $93,736 to $112,010, while diluted shares decreased from 15,408,095 to 15,004,697. :contentReference[oaicite:10]{index=10}",
+    "temporal_hard_negative": "EPS growth in 2025 was primarily driven by an increase in share count due to equity issuance, while net income remained relatively flat.",
+    "calculation_type": "EPS decomposition",
+    "reasoning_trace": "Both higher net income and lower share count contributed to EPS growth. The distractor incorrectly claims opposite share count dynamics.",
+    "final_answer": "It was driven by both higher net income and a reduction in share count."
+  },
+  {
+    "query": "Did marketable securities decrease more in current or non-current categories from 2024 to 2025?",
+    "golden_context": "Current marketable securities decreased from $35,228 to $18,763; non-current decreased from $91,479 to $77,723. :contentReference[oaicite:11]{index=11}",
+    "temporal_hard_negative": "Non-current marketable securities increased significantly in 2025, while current securities remained stable year over year.",
+    "calculation_type": "balance classification comparison",
+    "reasoning_trace": "Current securities decreased by ~16,465, larger than non-current decrease (~13,756). The distractor incorrectly claims increases.",
+    "final_answer": "The larger decrease was in current marketable securities."
   }
 ]

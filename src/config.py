@@ -11,11 +11,13 @@ EDGAR_CACHE_DIR    = DATA_DIR / "edgar_cache"        # raw EDGAR .htm downloads
 TRAINING_DATA_DIR  = DATA_DIR / "training"           # mined triplet CSVs
 DB_PATH            = DATA_DIR / "db" / "metadata.sqlite"
 FAISS_INDEX_PATH   = DATA_DIR / "index" / "faiss_index.bin"
+INGESTION_CACHE_DIR = DATA_DIR / "ingestion_cache"   # cached embeddings and chunks
 
 # Ensure all directories exist on import
 for _p in [CURATED_DATA_DIR, EDGAR_CACHE_DIR, TRAINING_DATA_DIR,
-           DB_PATH.parent, FAISS_INDEX_PATH.parent]:
+           DB_PATH.parent, FAISS_INDEX_PATH.parent, INGESTION_CACHE_DIR]:
     _p.mkdir(parents=True, exist_ok=True)
+
 
 # ── Parsing Config 
 CHUNK_SIZE    = 512   
@@ -31,12 +33,16 @@ SEC_ITEMS_OF_INTEREST = [
 ]
 
 # ── Model Config ──
-# Default bi-encoder.  To hot-swap to a fine-tuned checkpoint, change this
-# value to the local path of the exported model directory.
-BASE_ENCODER_MODEL = "BAAI/bge-base-en-v1.5"
+# Prefer local fine-tuned encoder if available, otherwise fall back.
+LOCAL_ENCODER_DIR = BASE_DIR / "model_config"
+BASE_ENCODER_MODEL = str(LOCAL_ENCODER_DIR) if LOCAL_ENCODER_DIR.exists() else "BAAI/bge-base-en-v1.5"
 
 RERANKER_MODEL  = "cross-encoder/ms-marco-MiniLM-L-6-v2"
 GENERATOR_MODEL = "google/flan-t5-base"
+
+# ── Gemini API Config ──
+GEMINI_API_KEY  = os.getenv("GEMINI_API_KEY", "")
+GEMINI_MODEL    = "gemini-2.0-flash"
 
 # ── Retrieval Config 
 RETRIEVAL_TOP_K      = 20   # candidates fetched from FAISS before reranking

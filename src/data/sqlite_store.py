@@ -1,6 +1,6 @@
 import sqlite3
 import uuid
-from typing import List, Dict, Optional
+from typing import List, Dict, Optional, Set
 from src import config
 
 class SQLiteStore:
@@ -79,6 +79,13 @@ class SQLiteStore:
             chunk_map = {row['chunk_id']: dict(row) for row in rows}
             return [chunk_map[cid] for cid in chunk_ids if cid in chunk_map]
 
+    def get_chunk_ids_for_doc(self, doc_id: str) -> Set[str]:
+        """Return all chunk_ids belonging to a specific document."""
+        with sqlite3.connect(self.db_path) as conn:
+            cursor = conn.cursor()
+            cursor.execute('SELECT chunk_id FROM chunks WHERE doc_id = ?', (doc_id,))
+            return {row[0] for row in cursor.fetchall()}
+
     def get_all_documents(self) -> List[Dict]:
         with sqlite3.connect(self.db_path) as conn:
             conn.row_factory = sqlite3.Row
@@ -91,4 +98,12 @@ class SQLiteStore:
             cursor = conn.cursor()
             cursor.execute('DELETE FROM chunks WHERE doc_id = ?', (doc_id,))
             cursor.execute('DELETE FROM documents WHERE doc_id = ?', (doc_id,))
+            conn.commit()
+
+    def clear_all(self):
+        """Remove all documents and chunks."""
+        with sqlite3.connect(self.db_path) as conn:
+            cursor = conn.cursor()
+            cursor.execute('DELETE FROM chunks')
+            cursor.execute('DELETE FROM documents')
             conn.commit()

@@ -1,16 +1,16 @@
 import faiss
 import numpy as np
 from pathlib import Path
-from typing import List, Tuple
+from typing import List, Tuple, Optional, Set
 from src import config
 
 class FAISSStore:
     """
     Manages the FAISS index and local disk persistence.
-    Works closely with SQLiteStore. Since SQLite uses string UUIDs and FAISS uses int64 IDs,
-    we maintain a mapping (or just rely on order if using a flat index with simple add).
-    To map UUIDs to FAISS IDs, we can use IndexIDMap or a separate dict persisted to disk.
-    For simplicity and robustness, we will use a separate mapping dict saved alongside the index.
+
+    Supports per-document filtering: callers can pass a set of valid chunk_ids
+    to restrict search results, avoiding cross-document contamination when
+    multiple documents share the same index.
     """
     def __init__(self, index_path: Path = config.FAISS_INDEX_PATH, dim: int = config.EXPECTED_EMBEDDING_DIM):
         self.index_path = index_path
@@ -42,9 +42,22 @@ class FAISSStore:
         self.chunk_ids.extend(chunk_ids)
         self.save()
 
-    def search(self, query_embedding: np.ndarray, top_k: int = 50) -> List[Tuple[str, float]]:
+    def search(
+        self,
+        query_embedding: np.ndarray,
+        top_k: int = 50,
+        allowed_chunk_ids: Optional[Set[str]] = None,
+    ) -> List[Tuple[str, float]]:
         """
         Search the index and return list of (chunk_id, score).
+
+        Args:
+            query_embedding: The query vector(s).
+            top_k: Number of results to return.
+            allowed_chunk_ids: If provided, only return results whose chunk_id
+                               is in this set. We over-fetch from FAISS and
+                               filter, ensuring we still return up to top_k
+                               results for the target document.
         """
         if self.index.ntotal == 0:
             return []
@@ -55,14 +68,27 @@ class FAISSStore:
         # Ensure 2D
         if len(query_embedding.shape) == 1:
             query_embedding = query_embedding.reshape(1, -1)
-            
-        scores, I = self.index.search(query_embedding, top_k)
+
+        # If filtering, over-fetch to compensate for discarded results
+        fetch_k = top_k
+        if allowed_chunk_ids is not None:
+            # Fetch more to ensure we get enough after filtering
+            fetch_k = min(self.index.ntotal, top_k * 5)
+
+        scores, I = self.index.search(query_embedding, fetch_k)
         
         results = []
         for j in range(len(I[0])):
             idx = I[0][j]
-            if idx != -1 and idx < len(self.chunk_ids):
-                results.append((self.chunk_ids[idx], float(scores[0][j])))
+            if idx == -1 or idx >= len(self.chunk_ids):
+                continue
+            cid = self.chunk_ids[idx]
+            # Apply document filter if provided
+            if allowed_chunk_ids is not None and cid not in allowed_chunk_ids:
+                continue
+            results.append((cid, float(scores[0][j])))
+            if len(results) >= top_k:
+                break
                 
         return results
 
@@ -70,3 +96,13 @@ class FAISSStore:
         faiss.write_index(self.index, str(self.index_path))
         with open(self.mapping_path, 'w') as f:
             f.write('\n'.join(self.chunk_ids))
+
+    def clear(self):
+        """Remove all data from the index and mapping file."""
+        self.index = faiss.IndexFlatIP(self.dim)
+        self.chunk_ids = []
+        # Remove files from disk
+        if self.index_path.exists():
+            self.index_path.unlink()
+        if self.mapping_path.exists():
+            self.mapping_path.unlink()

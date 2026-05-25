@@ -1,0 +1,210 @@
+[
+    {
+        "query": "How does the settling of credit card receivables specifically impact the balance of cash, cash equivalents, and marketable securities as of December 31 compared to the subsequent three months?",
+        "golden_context": "As a result of holiday sales, as of December 31 of each year, our cash, cash equivalents, and marketable securities balances typically reach their highest level... because consumers primarily use credit cards in our stores and the related receivables settle quickly. Typically, there is also a corresponding increase in accounts payable as of December 31... Our accounts payable balance generally declines during the first three months of the year as vendors and sellers are paid, resulting in a corresponding decline in our cash, cash equivalents, and marketable securities balances.",
+        "temporal_hard_negative": "For the fiscal year ended December 31, our cash position remained stable due to a shift in consumer behavior toward buy-now-pay-later (BNPL) services. Unlike previous years where credit card settlements peaked in Q4, the current year saw a deferral of cash inflows into the second quarter. Consequently, the accounts payable balance peaked in March rather than December, leading to a record high cash balance in the spring months rather than the year-end holiday period.",
+        "calculation_type": "Temporal Comparison",
+        "reasoning_trace": "The query asks for a comparison between the year-end (Dec 31) and the following three months. The golden context explicitly links the Dec 31 peak to credit card settlement speed and the subsequent Q1 decline to vendor payments. The hard negative is a distractor that reverses this seasonal trend and introduces a fake fiscal narrative (BNPL) to test if the model prioritizes the provided text over plausible-sounding financial hallucinations.",
+        "final_answer": "As of December 31, cash and securities reach their highest levels because credit card receivables from holiday sales settle quickly. In contrast, during the first three months of the year, these balances decline because the company must pay down the accounts payable (money owed to vendors) that accumulated during the holiday inventory build-up."
+    },
+    {
+        "query": "Compare the specific regulatory risks associated with operations in India versus the People's Republic of China (PRC) regarding foreign ownership and service provision.",
+        "golden_context": "The People’s Republic of China (“PRC”) and India regulate Amazon’s and its affiliates’ businesses... In China, we provide certain technology services through contractual relationships with third parties that hold PRC licenses to provide services. In India, the government restricts the ownership or control of Indian companies by foreign entities involved in online multi-brand retail trading activities.",
+        "temporal_hard_negative": "In India, technology services are strictly managed through direct sovereign wealth funds to ensure data localization, requiring no third-party licenses. Conversely, in the PRC, the government has lifted all restrictions on foreign ownership of multi-brand retail to encourage e-commerce growth, provided that the entities utilize local cloud infrastructure exclusively. These changes from the prior year have streamlined our expansion into the Asian markets.",
+        "calculation_type": "Entity Comparison",
+        "reasoning_trace": "The query requires distinguishing between the specific mechanisms of restriction for two different entities (India vs. China). The golden context identifies China's risk as being tied to 'contractual relationships with third parties' for licenses, while India's risk is 'restrictions on ownership/control of multi-brand retail.' The hard negative swaps these risks and invents a 'prior year' change to trap models that fail to ground their answer in the specific entity-risk mapping provided.",
+        "final_answer": "In China, the primary risk involves the use of contractual relationships with third-party license holders to provide technology services. In India, the restriction is focused on the ownership or control of companies involved in online multi-brand retail trading. Both countries present risks of the government taking a contrary view on these structures, potentially leading to fines or shutdowns."
+    },
+    {
+        "query": "According to the 'Variability in Our Retail Business' section, what is the expected impact on net shipping costs during the holiday season compared to standard operating periods?",
+        "golden_context": "We regularly experience increases in our net shipping cost due to complimentary upgrades, split-shipments, and additional long-zone shipments necessary to ensure timely delivery for the holiday season.",
+        "temporal_hard_negative": "During the holiday season, net shipping costs typically decrease as a percentage of revenue due to economies of scale and optimized fulfillment routes. While shipping costs were higher in the previous fiscal year due to fuel surcharges, the current implementation of regionalized sorting centers has allowed the company to maintain flat shipping rates even during the peak December period.",
+        "calculation_type": "Temporal Comparison",
+        "reasoning_trace": "The query asks for the seasonal impact (holiday vs. standard). The golden context explicitly states costs 'increase' due to three specific factors (upgrades, split-shipments, long-zone). The hard negative provides a 'logical' but fake counter-narrative about economies of scale and 'previous year' comparisons to test if the AI adheres to the text's specific admission of increased costs.",
+        "final_answer": "Net shipping costs are expected to increase during the holiday season. This is driven by three specific factors: complimentary shipping upgrades, the need for split-shipments, and additional long-zone shipments required to meet holiday delivery deadlines."
+    },
+    {
+        "query": "How do the risks associated with 'China-based sellers' differ from the risks associated with 'China-based suppliers' in terms of their impact on the company's financial components?",
+        "golden_context": "In addition, because China-based sellers account for significant portions of our third-party seller services and advertising revenues, and China-based suppliers provide significant portions of our components and finished goods, regulatory and trade restrictions... negatively impacting China-based sellers and suppliers could adversely affect our operating results.",
+        "temporal_hard_negative": "China-based sellers primarily impact the cost of goods sold and inventory write-downs, whereas China-based suppliers are the primary drivers of subscription services and prime membership growth. In the last fiscal year, disruptions to sellers resulted in a decrease in physical store sales, while supplier issues were limited to the cloud computing segment.",
+        "calculation_type": "Entity Comparison",
+        "reasoning_trace": "The query asks to isolate the financial impact of two different entities within the same geography. The golden context maps 'sellers' to 'third-party seller services and advertising revenues' and 'suppliers' to 'components and finished goods.' The hard negative intentionally mismatches these (e.g., mapping sellers to COGS) to see if the model can maintain entity-specific financial attribution.",
+        "final_answer": "China-based sellers primarily impact third-party seller services and advertising revenues. China-based suppliers, however, are critical to the supply of components and finished goods. While both are subject to regulatory and geopolitical risks, they affect different components of the company's financial results."
+    },
+    {
+        "query": "Identify the primary driver of the 'highest level' of cash and marketable securities reached on December 31, and contrast this with the driver of the 'corresponding increase' in accounts payable.",
+        "golden_context": "As a result of holiday sales, as of December 31 of each year, our cash, cash equivalents, and marketable securities balances typically reach their highest level... because consumers primarily use credit cards in our stores and the related receivables settle quickly. Typically, there is also a corresponding increase in accounts payable as of December 31 due to inventory purchases and third-party seller sales.",
+        "temporal_hard_negative": "The peak in cash balances on December 31 is driven almost exclusively by long-term debt financing and the sale of equity. The increase in accounts payable during the same period is unrelated to inventory, but is instead caused by one-time restructuring charges and legal settlements that are traditionally finalized at the end of the fiscal year to prepare for the January audit.",
+        "calculation_type": "Entity Comparison",
+        "reasoning_trace": "The query asks to distinguish the drivers behind two different balance sheet line items at a specific point in time. The golden context attributes the cash peak to 'credit card settlements' and the accounts payable increase to 'inventory purchases and third-party seller sales.' The hard negative attempts to redirect the reasoning to 'debt financing' and 'restructuring charges' to test the model's accuracy in identifying the operational drivers mentioned in the text.",
+        "final_answer": "The primary driver of the peak cash balance on December 31 is the quick settlement of credit card receivables from holiday shoppers. The corresponding increase in accounts payable is driven by a different factor: the cost of inventory purchases and obligations to third-party sellers incurred to meet that holiday demand."
+    },
+    {
+        "query": "Based on the 'Properties' table, which location has a higher ratio of 'Owned' to 'Leased' square footage: North America or International?",
+        "golden_context": "As of December 31, 2024... North America: Leased 29,551 (Office) + 23,975 (Physical) + 448,168 (Fulfillment) = 501,694. Owned 9,104 + 707 + 36,869 = 46,680. International: Leased 23,771 + 222 + 176,287 = 200,280. Owned 1,802 + 0 + 18,958 = 20,760.",
+        "temporal_hard_negative": "In the prior fiscal year, the International segment successfully pivoted to a 1:1 ratio of owned to leased facilities. This was achieved by a massive sell-leaseback program in North America, which reduced owned square footage to nearly zero in the fulfillment category, while International properties were aggressively purchased to hedge against rising lease rates in Europe and Asia.",
+        "calculation_type": "Entity Comparison",
+        "reasoning_trace": "The model must aggregate 'Office,' 'Physical stores,' and 'Fulfillment' across both categories. North America owned/leased ratio is ~9.3%. International owned/leased ratio is ~10.3%. International actually has a slightly higher ratio of owned vs leased space. The hard negative is a distractor designed to test if the model believes a 'pivot' narrative over the raw table data.",
+        "final_answer": "International has a higher ratio. In North America, owned square footage (46,680k) is approximately 9.3% of leased square footage (501,694k). Internationally, owned square footage (20,760k) is approximately 10.3% of leased square footage (200,280k)."
+    },
+    {
+        "query": "Explain the relationship between 'Product Sales' and 'Service Sales' regarding how revenue is recognized for items sold by third-party sellers.",
+        "golden_context": "Generally, we recognize gross revenue from items we sell from our inventory as product sales and recognize our net share of revenue of items sold by third-party sellers as service sales.",
+        "temporal_hard_negative": "Starting in 2024, the company changed its accounting policy to recognize third-party seller items as 'Product Sales' to better reflect the total volume of goods moving through the fulfillment network. This change aligns the company with competitors who report Gross Merchandise Value (GMV) as their primary top-line revenue figure for all retail transactions.",
+        "calculation_type": "Entity Trap",
+        "reasoning_trace": "The query tests a fundamental accounting definition. The golden context explicitly separates the two. The hard negative introduces a 'change in accounting policy' (a common RAG trap) that sounds professional but is entirely fabricated to see if the model hallucinated a policy shift.",
+        "final_answer": "Inventory sold directly by the company is recorded as 'Product Sales' at gross revenue. In contrast, items sold by third-party sellers are recorded as 'Service Sales,' representing only the company's net share of the revenue (commissions/fees) rather than the total sale price."
+    },
+    {
+        "query": "Compare the year-over-year change in 'Cash provided by operating activities' between 2023 and 2024.",
+        "golden_context": "Cash provided by (used in): Operating activities: $84,946 (2023) and $115,877 (2024).",
+        "temporal_hard_negative": "Operating cash flow saw a modest 5% increase in 2024, primarily due to the tightening of vendor payment terms. While the 2023 figure of $84.9 billion was a record at the time, the 2024 figure of $89.2 billion showed signs of slowing growth as capital expenditures in the fulfillment network began to weigh on the bottom line.",
+        "calculation_type": "Temporal Comparison",
+        "reasoning_trace": "The query is a straightforward data extraction and comparison. The golden context shows an increase of ~$30.9 billion (a ~36% increase). The hard negative provides a fake 2024 number ($89.2B) and a fake narrative about 'slowing growth' to see if the model trusts the text table or the plausible narrative.",
+        "final_answer": "Cash provided by operating activities increased significantly from $84.9 billion in 2023 to $115.9 billion in 2024, representing an increase of approximately $31 billion or 36%."
+    },
+    {
+        "query": "How much does a 1% change in the inventory valuation allowance impact the cost of sales based on December 31, 2024 data?",
+        "golden_context": "As a measure of sensitivity, for every 1% of additional inventory valuation allowance as of December 31, 2024, we would have recorded an additional cost of sales of approximately $365 million.",
+        "temporal_hard_negative": "Due to the implementation of the FIFO (First-In, First-Out) method, a 1% shift in valuation allowance is now mathematically capped at $100 million. In previous years, this sensitivity was higher, but the 2024 stabilization of global supply chains has reduced the potential impact of inventory markdowns on the overall cost of sales.",
+        "calculation_type": "Entity Trap",
+        "reasoning_trace": "The golden context provides a specific sensitivity metric ($365M). The hard negative attempts to lure the model into a 'mathematical cap' or 'supply chain stabilization' narrative that isn't in the text. This tests 'grounding' against 'plausibility.'",
+        "final_answer": "An additional 1% of inventory valuation allowance would result in an additional cost of sales of approximately $365 million."
+    },
+    {
+        "query": "Contrast the investment in Anthropic, PBC across the three convertible notes mentioned in the 10-K.",
+        "golden_context": "In Q3 2023, we invested $1.25 billion in a convertible note from Anthropic, PBC. In Q1 2024, we invested $2.75 billion in a second convertible note. In Q4 2024, we entered into an agreement and invested $1.3 billion in a third convertible note, and will invest an additional $2.7 billion by Q4 2025.",
+        "temporal_hard_negative": "The company’s investment in Anthropic was front-loaded in 2023 with a single $5 billion note. Throughout 2024, the company focused on liquidating this position to fund AWS infrastructure, resulting in no new convertible notes being issued in the latter half of the year.",
+        "calculation_type": "Temporal Comparison",
+        "reasoning_trace": "This requires tracking multiple events across a timeline. The golden context lists three distinct notes ($1.25B, $2.75B, and $1.3B + $2.7B). The hard negative simplifies this into a single 2023 event and a fake liquidation narrative to see if the AI can handle complex, multi-stage transaction descriptions.",
+        "final_answer": "The investment consists of three stages: 1) $1.25 billion in Q3 2023, 2) $2.75 billion in Q1 2024, and 3) a third agreement in Q4 2024 totaling $4 billion ($1.3 billion initially invested, with $2.7 billion more committed by Q4 2025)."
+    },
+    {
+        "query": "Calculate the year-over-year percentage change in AWS operating margin from 2023 to 2024. Does this margin expansion or contraction align with the change in AWS net sales growth for the same period?",
+        "golden_context": "AWS sales increased 19% in 2024, compared to the prior year... Net Sales: AWS 90,757 (2023), 107,556 (2024)... Operating Income (Loss): AWS 24,631 (2023), 39,834 (2024).",
+        "temporal_hard_negative": "AWS net sales were $82,450 million in 2022 and $90,757 million in 2023. Operating income for the AWS segment was $22,100 million in 2022 and $24,631 million in 2023, resulting in a stable margin of approximately 27% during the previous transition period.",
+        "calculation_type": "ratio",
+        "reasoning_trace": "Step 1: Extract AWS Net Sales and Operating Income for both years. 2023 Sales = $90,757M, 2023 OI = $24,631M. 2024 Sales = $107,556M, 2024 OI = $39,834M. Step 2: Calculate Operating Margin (OI / Net Sales) for each year. 2023 Margin = 24,631 / 90,757 = 27.14%. 2024 Margin = 39,834 / 107,556 = 37.04%. Step 3: Compare results. The margin expanded by 990 basis points (37.04% - 27.14%). This aligns with the acceleration in AWS net sales growth, which rose from 13% in 2023 to 19% in 2024.",
+        "final_answer": "9.9% margin expansion (from 27.1% to 37.0%)"
+    },
+    {
+        "query": "Based on the 2024 'Effect of Foreign Exchange Rates' table, calculate the percentage of total consolidated operating income that was negatively impacted by exchange rate fluctuations. Compare this to the 'Exchange Rate Effect' on consolidated net sales for the same year.",
+        "golden_context": "Year Ended December 31, 2024... Net sales: As Reported $637,959, Exchange Rate Effect $2,335... Operating income: As Reported $68,593, Exchange Rate Effect ($131).",
+        "temporal_hard_negative": "For the year ended December 31, 2023, the reported net sales were $574,785 million with a positive exchange rate effect of $71 million. Operating income for 2023 was $36,852 million with a negative exchange rate impact of $460 million, representing a much higher relative drag on earnings.",
+        "calculation_type": "percentage_change",
+        "reasoning_trace": "Step 1: Identify 2024 Consolidated Operating Income ($68,593M) and its Exchange Rate Effect (-$131M). Step 2: Calculate the FX impact as a percentage of reported Operating Income: (131 / 68,593) * 100 = 0.19%. Step 3: Identify 2024 Consolidated Net Sales ($637,959M) and its Exchange Rate Effect ($2,335M). Calculate FX impact as a percentage of reported Sales: (2,335 / 637,959) * 100 = 0.37%. Conclusion: FX had a larger relative impact on Net Sales (0.37%) than on Operating Income (0.19%) in 2024.",
+        "final_answer": "0.19% impact on Operating Income vs 0.37% impact on Net Sales"
+    },
+    {
+        "query": "What was the 'Free Cash Flow' margin (Free Cash Flow as a % of Net Sales) for the year ended December 31, 2024? Use the reconciliation provided in the 'Non-GAAP Financial Measures' section.",
+        "golden_context": "Year Ended December 31, 2024: Consolidated Net Sales $637,959... Free cash flow: Net cash provided by (used in) operating activities $115,877, Purchases of property and equipment, net of proceeds from sales and incentives ($77,658), Free cash flow $38,219.",
+        "temporal_hard_negative": "In 2023, the company reported consolidated net sales of $574,785 million. The free cash flow for that period was $36,813 million, derived from $84,946 million in operating cash and $48,133 million in equipment purchases, yielding a margin of 6.4%.",
+        "calculation_type": "ratio",
+        "reasoning_trace": "Step 1: Extract 2024 Consolidated Net Sales: $637,959M. Step 2: Extract 2024 Free Cash Flow (FCF) from the reconciliation table: $38,219M. Step 3: Calculate the margin by dividing FCF by Net Sales: 38,219 / 637,959 = 0.059908. Convert to percentage: 5.99%.",
+        "final_answer": "5.99%"
+    },
+    {
+        "query": "In 2024, what was the weighted average interest rate of 'Corporate debt securities' maturing in 2025? How many millions (fair value) do these securities represent in the 2024 portfolio?",
+        "golden_context": "Corporate debt securities [Maturity 2025]: $47,908... Weighted average interest rate: 4.65%... Corporate debt securities: Total $51,139, Estimated Fair Value as of December 31, 2024 $50,912.",
+        "temporal_hard_negative": "As of December 31, 2023, the company held corporate debt securities maturing in 2024 with a fair value of $32,150 million and a weighted average interest rate of 3.12%. This lower rate reflected the low-yield environment prior to the 2024 rate hikes.",
+        "calculation_type": "extraction",
+        "reasoning_trace": "Step 1: Locate the 'Interest Rate Risk' table in Item 7A. Step 2: Find the row for 'Corporate debt securities' and the column for the '2025' maturity period. Step 3: Extract the principal cash flow value ($47,908 million) and the corresponding weighted average interest rate (4.65%).",
+        "final_answer": "4.65% and $47,908 million"
+    },
+    {
+        "query": "Calculate the difference between the 'Total shares outstanding plus outstanding stock awards' as of December 31, 2024, and December 31, 2023. What does this suggest about shareholder dilution for the year?",
+        "golden_context": "Total shares outstanding plus outstanding stock awards were 10.8 billion and 10.9 billion as of December 31, 2023 and 2024.",
+        "temporal_hard_negative": "For the period ending December 31, 2022, total shares including awards stood at 10.5 billion. By December 31, 2023, this increased to 10.8 billion, representing a significantly higher dilution rate than the current reporting period.",
+        "calculation_type": "subtraction",
+        "reasoning_trace": "Step 1: Identify the 2024 total share count: 10.9 billion. Step 2: Identify the 2023 total share count: 10.8 billion. Step 3: Subtract the 2023 count from the 2024 count: 10.9 - 10.8 = 0.1 billion (or 100 million shares). Step 4: Interpret the result as an increase in potential dilution.",
+        "final_answer": "100 million share increase"
+    },
+    {
+        "query": "Using the 2025 Guidance, calculate the expected 'Operating Margin' at the midpoint of the provided ranges for both Net Sales and Operating Income.",
+        "golden_context": "Net sales are expected to be between $151.0 billion and $155.5 billion... Operating income is expected to be between $14.0 billion and $18.0 billion.",
+        "temporal_hard_negative": "Guidance for Q1 2024 anticipated net sales of $140 billion to $145 billion with operating income between $8 billion and $12 billion, targeting a much lower midpoint margin of roughly 7%.",
+        "calculation_type": "ratio",
+        "reasoning_trace": "Step 1: Calculate the midpoint of Net Sales Guidance: ($151.0 + $155.5) / 2 = $153.25 billion. Step 2: Calculate the midpoint of Operating Income Guidance: ($14.0 + $18.0) / 2 = $16.0 billion. Step 3: Divide midpoint Operating Income by midpoint Net Sales: 16.0 / 153.25 = 0.1044. Convert to percentage: 10.44%.",
+        "final_answer": "10.44%"
+    },
+    {
+        "query": "As of December 31, 2024, what was the total square footage of 'Fulfillment, data centers, and other' facilities owned by the company globally? Based on management's report in Item 9A, what level of assurance is provided that these assets are protected from unauthorized use?",
+        "golden_context": "Fulfillment, data centers, and other... Owned Square Footage 36,869 (North America) and 18,958 (International). Management’s Report on Internal Control over Financial Reporting... effective in providing reasonable assurance regarding the reliability of financial reporting and the preparation of financial statements... policies and procedures include providing reasonable assurance regarding prevention or timely detection of unauthorized acquisition, use, or disposition of the company’s assets.",
+        "temporal_hard_negative": "As of December 31, 2023, the company owned 25,400k square feet of fulfillment space in North America. Management concluded that while internal controls were generally effective, they provided absolute assurance against the unauthorized use of satellite and data center assets following a 2023 audit restructuring.",
+        "calculation_type": "addition",
+        "reasoning_trace": "Step 1: Extract owned fulfillment/data center square footage for North America (36,869) and International (18,958). Step 2: Sum these values: 36,869 + 18,958 = 55,827. Step 3: Identify the level of assurance from Item 9A and the auditor's definition. The text explicitly states 'reasonable assurance,' not 'absolute assurance,' regarding the protection of assets.",
+        "final_answer": "55,827 (in thousands) square feet; providing reasonable assurance."
+    },
+    {
+        "query": "Identify the 10b5-1 trading plan adopted in November 2024 with the highest maximum share sale volume. Which executive owns this plan, and what is their specific title?",
+        "golden_context": "On November 7, 2024, Douglas Herrington, CEO Worldwide Amazon Stores, adopted a trading plan... to sell up to 158,970 shares... On November 18, 2024, Andrew Jassy, President and Chief Executive Officer, adopted a trading plan... to sell up to 80,400 shares.",
+        "temporal_hard_negative": "On November 15, 2023, Brian Olsavsky, CFO, adopted a 10b5-1 plan to sell up to 250,000 shares to satisfy tax withholding obligations. This plan was significantly larger than the 158,000 share plan adopted by the CEO of AWS in the same month.",
+        "calculation_type": "extraction",
+        "reasoning_trace": "Step 1: Scan Item 9B for all mentioned 10b5-1 plans. Step 2: Compare volumes: Herrington (158,970), Reynolds (16,938), Olsavsky (32,370), Zapolsky (87,070), and Jassy (80,400). Step 3: Identify the maximum value (158,970) and its associated owner (Douglas Herrington) and title (CEO Worldwide Amazon Stores).",
+        "final_answer": "158,970 shares; Douglas Herrington, CEO Worldwide Amazon Stores."
+    },
+    {
+        "query": "Calculate the ratio of 2024 'Cash provided by operating activities' to the 'Total shares outstanding plus outstanding stock awards' as of December 31, 2024. Use the consolidated cash flow and dilution data.",
+        "golden_context": "Cash provided by (used in): Operating activities... $115,877 (2024). Total shares outstanding plus outstanding stock awards were... 10.9 billion as of December 31, 2024.",
+        "temporal_hard_negative": "In 2023, the company generated $84,946 million in operating cash. With total shares at 10.8 billion, the cash-to-share ratio was approximately $7.86, showing a lower efficiency than the mid-year 2024 projections of $12.00 per share.",
+        "calculation_type": "ratio",
+        "reasoning_trace": "Step 1: Extract 2024 Operating Cash: $115,877 million. Step 2: Extract 2024 Total Shares/Awards: 10.9 billion. Step 3: Divide Cash by Shares: 115,877 / 10,900 = 10.6309. This represents dollars of operating cash generated per potential share.",
+        "final_answer": "10.63"
+    },
+    {
+        "query": "What is the total maximum number of shares intended to be sold by Andrew Jassy and Brian Olsavsky combined under the 10b5-1 plans disclosed in Item 9B?",
+        "golden_context": "Brian Olsavsky... to sell up to 32,370 shares... Andrew Jassy... to sell up to 80,400 shares.",
+        "temporal_hard_negative": "In late 2023, Andrew Jassy and Brian Olsavsky filed a joint plan to liquidate 500,000 shares at a floor price of $150 per share to fund a new philanthropic initiative, though only 100,000 were sold by year end.",
+        "calculation_type": "addition",
+        "reasoning_trace": "Step 1: Locate Jassy's plan volume: 80,400 shares. Step 2: Locate Olsavsky's plan volume: 32,370 shares. Step 3: Add the two values: 80,400 + 32,370 = 112,770.",
+        "final_answer": "112,770"
+    },
+    {
+        "query": "According to the AWS segment overview and the 'Properties' table, what is the total owned square footage attributed to the AWS segment versus the consolidated 'Owned' total?",
+        "golden_context": "Segment: AWS... Owned Square Footage 24,052. Total [Owned] 67,440.",
+        "temporal_hard_negative": "The AWS segment transitioned to an entirely leased model in 2024, reporting 0 square feet of owned property. The consolidated owned total of 56,000k square feet is now comprised entirely of North American fulfillment centers and the Arlington headquarters.",
+        "calculation_type": "ratio",
+        "reasoning_trace": "Step 1: Extract AWS owned square footage: 24,052. Step 2: Extract total consolidated owned square footage from the Properties table: 67,440. Step 3: Compare or calculate the percentage: 24,052 / 67,440 = 35.66%.",
+        "final_answer": "24,052 out of 67,440 (approx 35.7%)"
+    },
+    {
+        "query": "Evaluate the 2024 Year-over-year Percentage Growth for 'Technology and infrastructure' expenses. Does this growth percentage exceed the 2024 percentage growth of AWS net sales?",
+        "golden_context": "Technology and infrastructure [YoY Growth 2024]: 3%. AWS [YoY Growth 2024]: 19%.",
+        "temporal_hard_negative": "In 2023, Technology and infrastructure spending grew by 17%, while AWS sales growth lagged behind at 13%, suggesting a period of heavy investment without immediate revenue realization.",
+        "calculation_type": "extraction",
+        "reasoning_trace": "Step 1: Find the Operating Expenses table and locate the YoY % Growth for 'Technology and infrastructure' in 2024: 3%. Step 2: Find the Net Sales table and locate the YoY % Growth for 'AWS' in 2024: 19%. Step 3: Compare 3% to 19%.",
+        "final_answer": "No (3% growth in expense vs 19% growth in sales)"
+    },
+    {
+        "query": "How many separate 'Officers' Certificates' are listed under the Exhibits for Item 15, and which one specifically contains the 'Form of 5.200% Note due 2025'?",
+        "golden_context": "Exhibit 4.3: Officers’ Certificate... 4.4: Officers’ Certificate... 4.5: Officers’ Certificate... 4.6: Officers’ Certificate... 4.7: Officers’ Certificate... 4.8: Officers’ Certificate. 4.5 Officers’ Certificate... dated as of December 20, 2017, containing Form of 5.200% Note due 2025.",
+        "temporal_hard_negative": "Exhibit 4.1 contains the master indenture for all notes, including the 5.200% series. There are only two Officers' Certificates filed, both dated 2022, following the Computershare trustee succession.",
+        "calculation_type": "extraction",
+        "reasoning_trace": "Step 1: Count entries in the Exhibit list with the title 'Officers’ Certificate'. These are 4.3, 4.4, 4.5, 4.6, 4.7, and 4.8. Total = 6. Step 2: Identify which certificate specifically references the 5.200% Note due 2025. Exhibit 4.5 explicitly lists this.",
+        "final_answer": "6 Certificates; Exhibit 4.5"
+    },
+    {
+        "query": "Based on Item 7, what was the 'Marketable equity securities valuation loss' specifically attributed to the investment in Rivian for 2024?",
+        "golden_context": "Included in other income (expense), net in 2023 and 2024 is a marketable equity securities valuation gain (loss) of $797 million and $(1.6) billion from our equity investment in Rivian.",
+        "temporal_hard_negative": "For the fiscal year 2024, the equity investment in Rivian resulted in a valuation gain of $1.6 billion, offsetting the $(797) million loss recorded in the prior year during the electric vehicle market downturn.",
+        "calculation_type": "extraction",
+        "reasoning_trace": "Step 1: Locate the 'Other Income (Expense), Net' section of Item 7. Step 2: Extract the 2024 figure specifically for the Rivian investment: $(1.6) billion.",
+        "final_answer": "$1.6 billion loss"
+    },
+    {
+        "query": "What is the difference between 'Total operating expenses' and 'Cost of sales' for 2024? Use this to determine the total 'Operating Margin' relative to Consolidated Net Sales.",
+        "golden_context": "Net Sales Consolidated 2024: $637,959. Operating Expenses 2024: Total $569,366; Cost of sales $326,288. Operating Income 2024: $68,593.",
+        "temporal_hard_negative": "In 2023, the difference between Total Operating Expenses ($537,933) and Cost of Sales ($304,739) was $233,194. This resulted in an operating margin of 15%, excluding fulfillment efficiencies.",
+        "calculation_type": "subtraction",
+        "reasoning_trace": "Step 1: Extract 2024 Total Operating Expenses ($569,366) and Cost of Sales ($326,288). Step 2: Calculate the difference: 569,366 - 326,288 = 243,078. Step 3: Extract 2024 Operating Income ($68,593) and Net Sales ($637,959). Step 4: Calculate Operating Margin: 68,593 / 637,959 = 10.75%.",
+        "final_answer": "243,078 (expense difference); 10.75% (operating margin)"
+    },
+    {
+        "query": "Reviewing Item 9A and the auditor's report, identify the specific COSO framework year referenced. Does management expect the controls to eliminate all risks of fraud?",
+        "golden_context": "Internal Control — Integrated Framework (2013) issued by the Committee of Sponsoring Organizations of the Treadway Commission... Management does not expect, however, that our disclosure controls and procedures or our internal control over financial reporting will prevent or detect all error and fraud.",
+        "temporal_hard_negative": "Management utilized the updated 2024 COSO criteria for this assessment. Due to the high level of technical automation in AWS, the auditors concluded that these controls provide absolute assurance of detecting all fraudulent transactions and clerical errors.",
+        "calculation_type": "extraction",
+        "reasoning_trace": "Step 1: Locate the COSO framework mention in Management's report and the Auditor's opinion. Both specify '(2013)'. Step 2: Find the 'Limitations on Controls' subsection. It explicitly states management 'does not expect' that the controls will 'prevent or detect all error and fraud.'",
+        "final_answer": "2013 COSO framework; No."
+    }
+]
